@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsa18w5m5chc8"]
+
+[ext_resource type="FontFile" uid="uid://b4wcwnm1vvitd" path="res://assets/Geo-Regular.ttf" id="1_hb1qn"]
+
+[sub_resource type="Theme" id="Theme_btpdj"]
+default_font = ExtResource("1_hb1qn")
+default_font_size = 30
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_0xm2m"]
+
+[node name="DVContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="DVLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_right = 1153.0
+offset_bottom = 50.0
+theme = SubResource("Theme_btpdj")
+bbcode_enabled = true
+text = "[center]Select your difficulty[/center]"
+
+[node name="Basic" type="Button" parent="." groups=["dvselect"]]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 56.0
+offset_right = 298.0
+offset_bottom = 95.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_0xm2m")
+text = "Basic"
+
+[node name="Standard" type="Button" parent="." groups=["dvselect"]]
+layout_mode = 2
+offset_left = 608.0
+offset_top = 56.0
+offset_right = 779.0
+offset_bottom = 96.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_0xm2m")
+text = "Standard"
+
+[node name="Uncommon" type="Button" parent="." groups=["dvselect"]]
+layout_mode = 2
+offset_left = 368.0
+offset_top = 56.0
+offset_right = 537.0
+offset_bottom = 97.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_0xm2m")
+text = "Uncommon"
+
+[node name="Advanced" type="Button" parent="." groups=["dvselect"]]
+layout_mode = 2
+offset_left = 821.0
+offset_top = 63.0
+offset_right = 991.0
+offset_bottom = 104.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_0xm2m")
+text = "Advanced"
+
+[node name="MoreInfoLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 96.0
+offset_right = 296.0
+offset_bottom = 203.0
+text = "A DV 6 architecture.
+
+Suitable for the novice netrunner."
+
+[node name="MoreInfoLabel2" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 376.0
+offset_top = 96.0
+offset_right = 538.0
+offset_bottom = 229.0
+text = "A DV 8 architecture.
+
+Suitable for netrunners with Interface 4."
+
+[node name="MoreInfoLabel3" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 608.0
+offset_top = 96.0
+offset_right = 776.0
+offset_bottom = 224.0
+text = "A DV 10 architecture.
+
+Suitable for netrunners with Interface 6."
+
+[node name="MoreInfoLabel4" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 824.0
+offset_top = 104.0
+offset_right = 992.0
+offset_bottom = 224.0
+text = "A DV 12 architecture.
+
+Suitable for netrunners with Interface 8."
+
+[node name="GenerateFloors" type="Button" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 464.0
+offset_top = 345.0
+offset_right = 666.0
+offset_bottom = 401.0
+text = "Generate Floors!"

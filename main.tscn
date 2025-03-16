@@ -1,0 +1,147 @@
+[gd_scene load_steps=6 format=3 uid="uid://b81xrwdkqpvor"]
+
+[ext_resource type="Script" uid="uid://cu4sjp1ckan3q" path="res://main.gd" id="1_ks0w5"]
+[ext_resource type="FontFile" uid="uid://b4wcwnm1vvitd" path="res://assets/Geo-Regular.ttf" id="2_ncjbv"]
+
+[sub_resource type="Theme" id="Theme_btpdj"]
+default_font = ExtResource("2_ncjbv")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_0xm2m"]
+default_font = ExtResource("2_ncjbv")
+default_font_size = 23
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_0xm2m"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ks0w5")
+
+[node name="NetArch" type="ScrollContainer" parent="."]
+clip_contents = false
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+follow_focus = true
+draw_focus_border = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Floors" type="VBoxContainer" parent="NetArch"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 70
+
+[node name="DVContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="DVLabel" type="RichTextLabel" parent="DVContainer"]
+layout_mode = 2
+offset_right = 1153.0
+offset_bottom = 50.0
+theme = SubResource("Theme_btpdj")
+bbcode_enabled = true
+text = "[center]Select your difficulty[/center]"
+
+[node name="Basic" type="Button" parent="DVContainer" groups=["dvselect"]]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 56.0
+offset_right = 298.0
+offset_bottom = 95.0
+theme = SubResource("Theme_0xm2m")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_0xm2m")
+text = "Basic"
+
+[node name="Standard" type="Button" parent="DVContainer" groups=["dvselect"]]
+layout_mode = 2
+offset_left = 608.0
+offset_top = 56.0
+offset_right = 779.0
+offset_bottom = 96.0
+theme = SubResource("Theme_0xm2m")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_0xm2m")
+text = "Standard"
+
+[node name="Uncommon" type="Button" parent="DVContainer" groups=["dvselect"]]
+layout_mode = 2
+offset_left = 368.0
+offset_top = 56.0
+offset_right = 537.0
+offset_bottom = 97.0
+theme = SubResource("Theme_0xm2m")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_0xm2m")
+text = "Uncommon"
+
+[node name="Advanced" type="Button" parent="DVContainer" groups=["dvselect"]]
+layout_mode = 2
+offset_left = 821.0
+offset_top = 63.0
+offset_right = 991.0
+offset_bottom = 104.0
+theme = SubResource("Theme_0xm2m")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_0xm2m")
+text = "Advanced"
+
+[node name="MoreInfoLabel" type="RichTextLabel" parent="DVContainer"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 96.0
+offset_right = 296.0
+offset_bottom = 232.0
+theme = SubResource("Theme_0xm2m")
+text = "A DV 6 architecture.
+
+Suitable for the novice netrunner."
+
+[node name="MoreInfoLabel2" type="RichTextLabel" parent="DVContainer"]
+layout_mode = 2
+offset_left = 368.0
+offset_top = 96.0
+offset_right = 538.0
+offset_bottom = 264.0
+theme = SubResource("Theme_0xm2m")
+text = "A DV 8 architecture.
+
+Suitable for netrunners with Interface 4."
+
+[node name="MoreInfoLabel3" type="RichTextLabel" parent="DVContainer"]
+layout_mode = 2
+offset_left = 608.0
+offset_top = 96.0
+offset_right = 776.0
+offset_bottom = 256.0
+theme = SubResource("Theme_0xm2m")
+text = "A DV 10 architecture.
+
+Suitable for netrunners with Interface 6."
+
+[node name="MoreInfoLabel4" type="RichTextLabel" parent="DVContainer"]
+layout_mode = 2
+offset_left = 824.0
+offset_top = 104.0
+offset_right = 992.0
+offset_bottom = 264.0
+theme = SubResource("Theme_0xm2m")
+text = "A DV 12 architecture.
+
+Suitable for netrunners with Interface 8."
+
+[node name="GenerateFloors" type="Button" parent="DVContainer"]
+visible = false
+layout_mode = 2
+offset_left = 464.0
+offset_top = 345.0
+offset_right = 666.0
+offset_bottom = 401.0
+theme = SubResource("Theme_0xm2m")
+text = "Generate Floors!"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[connection signal="pressed" from="DVContainer/GenerateFloors" to="." method="_on_generate_floors_pressed"]

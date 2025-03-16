@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b81xrwdkqpvor"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ks0w5"]
+[ext_resource type="FontFile" uid="uid://b4wcwnm1vvitd" path="res://assets/Geo-Regular.ttf" id="2_ncjbv"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ks0w5")
+
+[node name="NumFloorsLabel" type="RichTextLabel" parent="."]
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 427.0
+offset_bottom = 60.0
+theme_override_fonts/normal_font = ExtResource("2_ncjbv")
+theme_override_font_sizes/normal_font_size = 40
+text = "Number of Floors"
+
+[node name="Three" type="Button" parent="."]
+offset_left = 22.0
+offset_top = 68.0
+offset_right = 214.0
+offset_bottom = 118.0
+theme_override_fonts/font = ExtResource("2_ncjbv")
+theme_override_font_sizes/font_size = 30
+text = "Three"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[connection signal="button_down" from="Three" to="." method="_on_three_button_down"]
