@@ -1,6 +1,6 @@
 # TODO:
 # ⏹️Branching
-# ⏹️Need to repeat certain nodes
+# ⏹️Need a way to do a new arch w/o restarting the app
 
 extends Node2D
 
@@ -123,7 +123,7 @@ func get_net_floors_dict():
 	floors_cont.add_child(fl)
 	# Now let's get the rest of the floors!
 	var used_nums = []
-	for i in floor_num - 2:
+	for i in floor_num - 1:
 		while true:
 			n = roll_dice(3, 6)
 			var val = curr_dv_table[n]
@@ -158,5 +158,4 @@ func _ready():
 func _on_generate_floors_pressed() -> void:
 	print("Generating floors...")
 	$DVContainer.queue_free()
-	#get_net_floors()
 	get_net_floors_dict()
