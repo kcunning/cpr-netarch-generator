@@ -35,6 +35,14 @@ theme_override_constants/separation = 70
 layout_mode = 3
 anchors_preset = 0
 
+[node name="Title" type="RichTextLabel" parent="DVContainer"]
+offset_right = 1153.0
+offset_bottom = 64.0
+theme = SubResource("Theme_btpdj")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "[center]Cyberpunk Red Net Architecture Generator[/center]"
+
 [node name="DVLabel" type="RichTextLabel" parent="DVContainer"]
 layout_mode = 2
 offset_top = 80.0
@@ -142,14 +150,6 @@ offset_bottom = 448.0
 theme = SubResource("Theme_0xm2m")
 theme_override_font_sizes/font_size = 30
 text = "Generate Floors!"
-
-[node name="DVLabel2" type="RichTextLabel" parent="DVContainer"]
-offset_right = 1153.0
-offset_bottom = 64.0
-theme = SubResource("Theme_btpdj")
-theme_override_font_sizes/normal_font_size = 45
-bbcode_enabled = true
-text = "[center]Cyberpunk Red Net Architecture Generator[/center]"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)

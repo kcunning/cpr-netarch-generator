@@ -24,4 +24,4 @@ func _to_string() -> String:
 
 
 func _on_button_pressed() -> void:
-	$Button.text = content
+	$Button.text = floor_num + ": " + content

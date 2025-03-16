@@ -118,7 +118,7 @@ func get_net_floors_dict():
 		n = roll_dice(1, 6)
 		if lobby_table[n] != "Password DV6":
 			break
-	fl.set_up_floor("2", lobby_table[roll_dice(1, 6)])
+	fl.set_up_floor("2", lobby_table[n])
 	floors_dict[2] = [fl]
 	floors_cont.add_child(fl)
 	# Now let's get the rest of the floors!
@@ -130,12 +130,12 @@ func get_net_floors_dict():
 			if val.contains("File") or val.contains("Control"):
 				# We want netrunners to get more files or control nodes
 				break
-			elif not n in used_nums:
+			if not n in used_nums:
 				used_nums.append(n)
 				break
 		fl = floor_scn.instantiate()
 		fl.set_up_floor(str(i+3), curr_dv_table[n])
-		floors_dict[n+1] = [fl]
+		floors_dict[i+1] = [fl]
 		floors_cont.add_child(fl)
 
 func set_dv(btn):
