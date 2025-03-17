@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxie7vttcky21"]
 
 [ext_resource type="Script" uid="uid://gk7n8cnnvy5t" path="res://floor.gd" id="1_oj3tl"]
-[ext_resource type="FontFile" uid="uid://b4wcwnm1vvitd" path="res://assets/Geo-Regular.ttf" id="2_cgngl"]
+[ext_resource type="FontFile" uid="uid://xv1pf4dl2nr5" path="res://assets/static/Oxanium-Bold.ttf" id="2_cgngl"]
 
 [sub_resource type="Theme" id="Theme_wd3ws"]
 default_font = ExtResource("2_cgngl")

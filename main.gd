@@ -157,5 +157,7 @@ func _ready():
 
 func _on_generate_floors_pressed() -> void:
 	print("Generating floors...")
-	$DVContainer.queue_free()
+	#$DVContainer.queue_free()
+	$DVContainer.visible = false
+	$NetArch.visible = true
 	get_net_floors_dict()
