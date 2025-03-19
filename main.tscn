@@ -22,20 +22,19 @@ default_font_size = 23
 script = ExtResource("1_ks0w5")
 
 [node name="NetArch" type="ScrollContainer" parent="."]
-visible = false
-clip_contents = false
-offset_right = 456.0
+offset_right = 752.0
 offset_bottom = 648.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 follow_focus = true
 draw_focus_border = true
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
 
-[node name="Floors" type="VBoxContainer" parent="NetArch"]
+[node name="Floors" type="FlowContainer" parent="NetArch"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 70
+size_flags_horizontal = 6
+size_flags_vertical = 2
+theme_override_constants/v_separation = 70
 
 [node name="DVContainer" type="Control" parent="."]
 layout_mode = 3

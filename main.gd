@@ -8,8 +8,9 @@ var arch_dv : String
 var dv_btn_grp : ButtonGroup
 var curr_dv_table : Dictionary
 var floor_pos_diff : Vector2 = Vector2(0, 100)
-var floors_cont : VBoxContainer
+var floors_cont : FlowContainer
 var floors_dict : Dictionary = {}
+var curr_branches : int = 0
 
 var lobby_table : Dictionary = {
 	1: "File DV6",
@@ -105,9 +106,18 @@ func roll_dice(n, d):
 	
 func get_net_floors_dict():
 	var floor_num = roll_dice(3, 6)
+	var branches = 0
 	print("Generating %s floors" % floor_num)
+	while true:
+		var b = roll_dice(1, 10)
+		if b >= 7:
+			branches += 1
+		else:
+			break
+	print("We should have %d branches" % branches)
 	# Let's get the lobby first...
 	var floor_scn = load("res://floor.tscn")
+	var br_floor_scn = load("res://branched-floor.tscn")
 	var fl = floor_scn.instantiate()
 	fl.set_up_floor("1", "Password DV6")
 	floors_dict[1] = [fl]
@@ -124,6 +134,10 @@ func get_net_floors_dict():
 	# Now let's get the rest of the floors!
 	var used_nums = []
 	for i in floor_num - 1:
+		if i == 3:
+			print("We should branch here")
+			curr_branches = 1
+			#break
 		while true:
 			n = roll_dice(3, 6)
 			var val = curr_dv_table[n]
@@ -135,8 +149,14 @@ func get_net_floors_dict():
 				break
 		fl = floor_scn.instantiate()
 		fl.set_up_floor(str(i+3), curr_dv_table[n])
+		var btn = fl.get_children()[0]
+		print(btn.size)
+		if curr_branches > 0:
+			btn.size.x = 200
 		floors_dict[i+1] = [fl]
 		floors_cont.add_child(fl)
+		
+
 
 func set_dv(btn):
 	print(btn)
