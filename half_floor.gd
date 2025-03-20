@@ -1,17 +1,15 @@
 extends Node2D
+
 var floor_num : int
 var label : String
-
 
 func set_up_floor(num, content):
 	floor_num = num
 	label = content
-	$Content.text = str(floor_num)
+	$First/Content.text = str(floor_num)
 	
-func _ready():
-	pass
 
 
 func _on_content_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		$Content.text = "%d: %s" % [floor_num, label]
+		$First/Content.text = "%d: %s" % [floor_num, label]

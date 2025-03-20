@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://d07e72bbno08y"]
+[gd_scene load_steps=5 format=3 uid="uid://d07e72bbno08y"]
 
+[ext_resource type="Script" uid="uid://c7qrb8u7hooey" path="res://half_floor.gd" id="1_gsn43"]
 [ext_resource type="FontFile" uid="uid://xv1pf4dl2nr5" path="res://assets/static/Oxanium-Bold.ttf" id="1_qg2da"]
 
 [sub_resource type="Theme" id="Theme_o34k6"]
 default_font = ExtResource("1_qg2da")
 default_font_size = 25
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsn43"]
+size = Vector2(578, 112)
+
 [node name="HalfFloor" type="Node2D"]
+script = ExtResource("1_gsn43")
 
 [node name="First" type="Node2D" parent="."]
 position = Vector2(0, 40)
@@ -18,7 +23,7 @@ polygon = PackedVector2Array(0, 0, 0, 64, 256, 64, 256, 0)
 [node name="Foreground" type="Polygon2D" parent="First"]
 polygon = PackedVector2Array(8, 8, 8, 56, 248, 56, 248, 8, 0, 8)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="First"]
+[node name="Content" type="RichTextLabel" parent="First"]
 offset_right = 256.0
 offset_bottom = 64.0
 theme = SubResource("Theme_o34k6")
@@ -32,3 +37,11 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(8, 0)
 color = Color(0.792157, 0, 0, 1)
 polygon = PackedVector2Array(168, -32, 200, -32, 191.084, -18.6254, 184, -8)
+
+[node name="Box" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Box"]
+position = Vector2(287, 56)
+shape = SubResource("RectangleShape2D_gsn43")
+
+[connection signal="gui_input" from="First/Content" to="." method="_on_content_gui_input"]

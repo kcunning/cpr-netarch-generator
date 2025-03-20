@@ -9,9 +9,10 @@ extends Node2D
 # arches
 
 # TODO
-# ⏹️Set up the title, too
+# ✅Set up the title, too
 # ✅Get the single floors rendering
-# ⏹️Get the double floors rendering
+# ✅Get the double floors rendering
+# ⏹️Hide floors until revealed
 
 
 var arch : Dictionary
@@ -19,6 +20,7 @@ var branched : bool = false
 @onready var base : Node2D = $"."
 var num_floors_filled : int = 0
 var top_offset = 60
+var title : String
 
 func get_fake_arch():
 	# Returns a fake arch for now.
@@ -27,9 +29,10 @@ func get_fake_arch():
 		2: ["Password DV8"],
 		3: ["Wasp"],
 		4: ["Asp", "Wisp"],
-		5: ["File DV6", "Password DV10"],
-		6: ["Control DV8"]
+		5: ["File DV6"],
+		#6: ["Control DV8"]
 	}
+	title = "Fake title for now"
 	return dd
 	
 func move_node(node):
@@ -47,6 +50,7 @@ func move_node(node):
 	num_floors_filled += 1
 
 func set_up_arch(arch=null):
+	$Title.text = title
 	var single_tscn = load("res://single_foor.tscn")
 	var double_tscn = load("res://double_floor.tscn")
 	var half_tscn = load("res://half_floor.tscn")
@@ -65,14 +69,13 @@ func set_up_arch(arch=null):
 			new_floor.set_up_floor(num, arch[num][0], arch[num][1])
 			base.add_child(new_floor)
 			move_node(new_floor)
-		elif branched and len(arch[num]) > 1:
-			# TODO: This is currently not triggering. Make it work!
-			var new_floor = double_tscn.instantiate()
-			new_floor.set_up_floor(num, arch[num][0], arch[num][1])
+		elif branched and len(arch[num]) <= 1:
+			print("Branched floor, one floor")
+			var new_floor = half_tscn.instantiate()
+			print("Creating with ", num, arch[num])
+			new_floor.set_up_floor(num, arch[num][0])
 			base.add_child(new_floor)
 			move_node(new_floor)
-		else:
-			print("Branched floor, two nodes")
 	
 func _ready():
 	arch = get_fake_arch()

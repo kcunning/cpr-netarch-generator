@@ -68,3 +68,6 @@ polygon = PackedVector2Array(168, -32, 200, -32, 191.084, -18.6254, 184, -8)
 [node name="Shape" type="CollisionShape2D" parent="Box"]
 position = Vector2(287, 56)
 shape = SubResource("RectangleShape2D_62rrt")
+
+[connection signal="gui_input" from="First/FirstContent" to="." method="_on_first_content_gui_input"]
+[connection signal="gui_input" from="Second/SecondContent" to="." method="_on_second_content_gui_input"]
