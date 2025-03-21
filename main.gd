@@ -1,6 +1,8 @@
 # TODO:
 # ⏹️Branching
 # ⏹️Need a way to do a new arch w/o restarting the app
+# 🐞Branching causes too many floors. Need to move counter head one, and keep track of 
+#	floor num seperately.
 
 extends Node2D
 
@@ -97,6 +99,56 @@ var advanced_table : Dictionary = {
 	18: "Dragon x 2"
 }
 
+func get_new_floor_key(used_nums):
+	# Assumes that we've already set the DV
+	while true:
+		var n = roll_dice(3, 6)
+		if "Control" in curr_dv_table[n] or "File" in curr_dv_table:
+			return n
+		if not n in used_nums:
+			return n
+
+func get_branched_net_floors_dict():
+	# How many floors will we have?
+	var total_floors = roll_dice(3, 6)
+	var branched = false
+	# The first floor will always be Password DV6
+	floors_dict["1"] = ["Password DV6"]
+	# The second floor will pull from the lobby
+	while true:
+		var n = roll_dice(1, 6)
+		if lobby_table[n] != "Password DV6":
+			floors_dict["2"] = [lobby_table[n]]
+			break
+	# For every floor, make sure we're getting a new number for the table.
+	var used_nums = []
+	
+	for i in range(total_floors - 1):
+		# Every floor after, check to see if we'll branch
+		# If so, stop checking, split bw the two
+		var n : int
+		if not branched:
+			var r = roll_dice(1, 10)
+			if r >= 7:
+				branched = true
+		
+		if not branched:
+			# Make a single floor
+			n = get_new_floor_key(used_nums)
+			floors_dict[str(i+3)] = [curr_dv_table[n]]
+			used_nums.append(n)
+		elif branched:
+			# Logic error here: Too many floors. 
+			n = get_new_floor_key(used_nums)
+			floors_dict[str(i+3)] = [curr_dv_table[n]]
+			used_nums.append(n)
+			n = get_new_floor_key(used_nums)
+			floors_dict[str(i+3)].append(curr_dv_table[n])
+			used_nums.append(n)
+		else:
+			pass
+			# Finally, if we're down to two floors and an empty level, only do one
+
 func roll_dice(n, d):
 	var s = 0
 	for i in n:
@@ -156,8 +208,6 @@ func get_net_floors_dict():
 		floors_dict[i+1] = [fl]
 		floors_cont.add_child(fl)
 		
-
-
 func set_dv(btn):
 	print(btn)
 	arch_dv = btn.name
@@ -174,10 +224,11 @@ func _ready():
 	for btn in btns:
 		btn.pressed.connect(set_dv.bind(btn))
 		
-
 func _on_generate_floors_pressed() -> void:
 	print("Generating floors...")
 	#$DVContainer.queue_free()
-	$DVContainer.visible = false
-	$NetArch.visible = true
-	get_net_floors_dict()
+	#$DVContainer.visible = false
+	#$NetArch.visible = true
+	#get_net_floors_dict()
+	get_branched_net_floors_dict()
+	print(floors_dict)

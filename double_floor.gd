@@ -17,10 +17,10 @@ func set_up_floor(num, cont1, cont2):
 
 
 func _on_first_content_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		$First/FirstContent.text = "%da: %s" % [floor_num, first]
 
 
 func _on_second_content_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		$Second/SecondContent.text = "%db: %s" % [floor_num, second]

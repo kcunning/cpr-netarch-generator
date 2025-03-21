@@ -12,12 +12,16 @@ extends Node2D
 # ✅Set up the title, too
 # ✅Get the single floors rendering
 # ✅Get the double floors rendering
-# ⏹️Hide floors until revealed
-
+# ✅Hide floors until revealed
+# ✅Scroll down to other floors
+# ⏹️Randomly generate a tree...
+# ✅Scrolling over a floor reveals it...
+# ⏹️Make left click undo a reveal
 
 var arch : Dictionary
 var branched : bool = false
 @onready var base : Node2D = $"."
+@onready var camera : Camera2D = $Camera2D
 var num_floors_filled : int = 0
 var top_offset = 60
 var title : String
@@ -30,7 +34,7 @@ func get_fake_arch():
 		3: ["Wasp"],
 		4: ["Asp", "Wisp"],
 		5: ["File DV6"],
-		#6: ["Control DV8"]
+		6: ["Control DV8"]
 	}
 	title = "Fake title for now"
 	return dd
@@ -80,4 +84,16 @@ func set_up_arch(arch=null):
 func _ready():
 	arch = get_fake_arch()
 	set_up_arch(arch)
+		
+		
+func _unhandled_input(event: InputEvent) -> void:
+	#print(event)
+	if event is InputEventMouseButton and event.pressed==true:
+		print(event)
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			print("Would go up!")
+			camera.position.y += 20
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			print("Would go down!")
+			camera.position.y -= 20
 	
