@@ -3,9 +3,11 @@
 # ✅Need a way to do a new arch w/o restarting the app
 # ✅Branching causes too many floors. Need to move counter head one, and keep track of 
 #	floor num seperately.
-# ⏹️Figuring out the centering issue
+# ⏹️Figure out the centering issue
 # ⏹️Prettify!
 # ⏹️Remove prints and unused code
+# ⏹️Make half-floors a tiny bit wider
+# ⏹️Don't scroll past the bottom of the arch?
 
 extends Node2D
 
