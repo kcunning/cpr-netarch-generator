@@ -2,7 +2,7 @@ extends Node2D
 
 var first : String
 var second: String
-var floor_num : int
+var floor_num
 
 func set_up_floor(num, cont1, cont2):
 	#var first = find_child("FirstContent")

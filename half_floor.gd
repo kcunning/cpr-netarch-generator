@@ -1,6 +1,6 @@
 extends Node2D
 
-var floor_num : int
+var floor_num
 var label : String
 
 func set_up_floor(num, content):

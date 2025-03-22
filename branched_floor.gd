@@ -20,8 +20,6 @@ extends Node2D
 
 var arch : Dictionary
 var branched : bool = false
-@onready var base : Node2D = $"."
-@onready var camera : Camera2D = $Camera2D
 var num_floors_filled : int = 0
 var top_offset = 60
 var title : String
@@ -41,9 +39,9 @@ func get_fake_arch():
 	
 func move_node(node):
 	var mid = get_viewport_rect().size / 2
-	print("Mid: ", mid)
+	#print("Mid: ", mid)
 	var box = node.find_child("Shape")
-	print("Node width? ", box.shape.size.x)
+	#print("Node width? ", box.shape.size.x)
 	var w = box.shape.size.x
 	var h = box.shape.size.y
 	node.position = Vector2(mid.x - (w/2), node.position.y + top_offset)
@@ -55,14 +53,15 @@ func move_node(node):
 
 func set_up_arch(arch=null):
 	$Title.text = title
+	var base = $"."
 	var single_tscn = load("res://single_foor.tscn")
 	var double_tscn = load("res://double_floor.tscn")
 	var half_tscn = load("res://half_floor.tscn")
 	
 	for num in arch:
-		print(num, ": ", len(arch[num]))
+		#print(num, ": ", len(arch[num]))
 		if not branched and len(arch[num]) <= 1:
-			print("Would print single")
+			#print("Would print single")
 			var new_floor = single_tscn.instantiate()
 			new_floor.set_up_floor(num, arch[num][0])
 			base.add_child(new_floor)
@@ -74,26 +73,15 @@ func set_up_arch(arch=null):
 			base.add_child(new_floor)
 			move_node(new_floor)
 		elif branched and len(arch[num]) <= 1:
-			print("Branched floor, one floor")
+			#print("Branched floor, one floor")
 			var new_floor = half_tscn.instantiate()
-			print("Creating with ", num, arch[num])
+			#print("Creating with ", num, arch[num])
 			new_floor.set_up_floor(num, arch[num][0])
 			base.add_child(new_floor)
 			move_node(new_floor)
 	
 func _ready():
-	arch = get_fake_arch()
-	set_up_arch(arch)
-		
-		
-func _unhandled_input(event: InputEvent) -> void:
-	#print(event)
-	if event is InputEventMouseButton and event.pressed==true:
-		print(event)
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			print("Would go up!")
-			camera.position.y += 20
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			print("Would go down!")
-			camera.position.y -= 20
+	#arch = get_fake_arch()
+	#set_up_arch(arch)
+	pass	
 	

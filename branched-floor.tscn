@@ -11,13 +11,10 @@ default_font_size = 50
 script = ExtResource("1_1fyjh")
 
 [node name="Title" type="RichTextLabel" parent="."]
-offset_top = 16.0
-offset_right = 1152.0
+offset_left = -248.0
+offset_right = 264.0
 offset_bottom = 72.0
 theme = SubResource("Theme_1fyjh")
 text = "Title Type of Floor"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 320)

@@ -1,5 +1,5 @@
 extends Node2D
-var floor_num : int
+var floor_num
 var label : String
 
 
