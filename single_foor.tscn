@@ -12,6 +12,8 @@ size = Vector2(384, 112)
 
 [node name="SingleFoor" type="Node2D"]
 script = ExtResource("1_ag88x")
+floor_num = "1"
+label = "test"
 
 [node name="BG" type="Polygon2D" parent="."]
 position = Vector2(0, 40)

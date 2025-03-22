@@ -14,7 +14,7 @@ extends Node2D
 # ✅Get the double floors rendering
 # ✅Hide floors until revealed
 # ✅Scroll down to other floors
-# ⏹️Randomly generate a tree...
+# ✅Randomly generate a tree...
 # ✅Scrolling over a floor reveals it...
 # ⏹️Make left click undo a reveal
 
@@ -52,6 +52,7 @@ func move_node(node):
 	num_floors_filled += 1
 
 func set_up_arch(arch=null):
+	print("Set up called with", arch)
 	$Title.text = title
 	var base = $"."
 	var single_tscn = load("res://single_foor.tscn")
@@ -61,8 +62,9 @@ func set_up_arch(arch=null):
 	for num in arch:
 		#print(num, ": ", len(arch[num]))
 		if not branched and len(arch[num]) <= 1:
-			#print("Would print single")
+			# This is for single floors
 			var new_floor = single_tscn.instantiate()
+			print("Single floor vals: ", num, " ", arch[num][0])
 			new_floor.set_up_floor(num, arch[num][0])
 			base.add_child(new_floor)
 			move_node(new_floor)

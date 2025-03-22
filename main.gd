@@ -1,8 +1,11 @@
 # TODO:
-# ⏹️Branching
-# ⏹️Need a way to do a new arch w/o restarting the app
-# 🐞Branching causes too many floors. Need to move counter head one, and keep track of 
+# ✅Branching
+# ✅Need a way to do a new arch w/o restarting the app
+# ✅Branching causes too many floors. Need to move counter head one, and keep track of 
 #	floor num seperately.
+# ⏹️Figuring out the centering issue
+# ⏹️Prettify!
+# ⏹️Remove prints and unused code
 
 extends Node2D
 
@@ -12,7 +15,9 @@ var curr_dv_table : Dictionary
 var floor_pos_diff : Vector2 = Vector2(0, 100)
 var floors_dict : Dictionary = {}
 var curr_branches : int = 0
+var arch_node
 @onready var camera = $Camera2D
+var max_y : float
 
 var lobby_table : Dictionary = {
 	1: "File DV6",
@@ -234,21 +239,19 @@ func _ready():
 	var btns = get_tree().get_nodes_in_group("dvselect")
 	for btn in btns:
 		btn.pressed.connect(set_dv.bind(btn))
+	max_y = camera.position.y
 		
 func _on_generate_floors_pressed() -> void:
-	#$DVContainer.queue_free()
-	#$DVContainer.visible = false
-	#$NetArch.visible = true
-	#get_net_floors_dict()
 	get_branched_net_floors_dict()
-	print(floors_dict)
+	print("Current Floors dict:", floors_dict)
 	var arch_scn = load("res://branched-floor.tscn")
-	var arch_node = arch_scn.instantiate()
+	arch_node = arch_scn.instantiate()
 	print("Setting up with floors dict, ", floors_dict)
-	arch_node.title ="Temp title"
+	arch_node.title = arch_dv
 	arch_node.set_up_arch(floors_dict)
 	$".".add_child(arch_node)
 	$DVContainer.visible = false
+	$BackBtn.visible = true
 	arch_node.position = Vector2(500, 0)
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -256,5 +259,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed==true:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			camera.position.y += 20
-		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
+		elif event.button_index == MOUSE_BUTTON_WHEEL_UP and camera.position.y > max_y:
 			camera.position.y -= 20
+
+
+func _on_back_btn_pressed() -> void:
+	print("Back button pressed")
+	arch_node.queue_free()
+	$DVContainer.visible = true
+	$BackBtn.visible = false
+	

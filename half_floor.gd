@@ -12,4 +12,4 @@ func set_up_floor(num, content):
 
 func _on_content_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		$First/Content.text = "%d: %s" % [floor_num, label]
+		$First/Content.text = floor_num + ": " + label

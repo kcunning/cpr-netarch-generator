@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b81xrwdkqpvor"]
+[gd_scene load_steps=10 format=3 uid="uid://b81xrwdkqpvor"]
 
 [ext_resource type="Script" uid="uid://cu4sjp1ckan3q" path="res://main.gd" id="1_ks0w5"]
 [ext_resource type="FontFile" uid="uid://b4wcwnm1vvitd" path="res://assets/Geo-Regular.ttf" id="2_ncjbv"]
 [ext_resource type="FontFile" uid="uid://xv1pf4dl2nr5" path="res://assets/static/Oxanium-Bold.ttf" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://hd1xeyd7lbdp" path="res://assets/static/back-arrow.png" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bgv4uwxca4hms" path="res://assets/static/back-arrow-pressed.png" id="5_7mycd"]
 
 [sub_resource type="Theme" id="Theme_btpdj"]
 default_font = ExtResource("2_ncjbv")
@@ -146,4 +148,14 @@ text = "Generate Floors!"
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
+[node name="BackBtn" type="TextureButton" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+tooltip_text = "Generate a different arch"
+texture_normal = ExtResource("4_lquwl")
+texture_pressed = ExtResource("4_lquwl")
+texture_hover = ExtResource("5_7mycd")
+
 [connection signal="pressed" from="DVContainer/GenerateFloors" to="." method="_on_generate_floors_pressed"]
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

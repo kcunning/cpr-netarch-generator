@@ -1,11 +1,12 @@
 extends Node2D
-var floor_num
-var label : String
+@export var floor_num: String
+@export var label : String
 
 
 func set_up_floor(num, content):
 	floor_num = num
 	label = content
+	print("Single got: ", num, " ", content)
 	$Content.text = str(floor_num)
 	
 func _ready():
@@ -14,4 +15,4 @@ func _ready():
 
 func _on_content_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		$Content.text = "%d: %s" % [floor_num, label]
+		$Content.text = floor_num + ": " + label
