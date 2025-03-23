@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b81xrwdkqpvor"]
+[gd_scene load_steps=15 format=3 uid="uid://b81xrwdkqpvor"]
 
 [ext_resource type="Script" uid="uid://cu4sjp1ckan3q" path="res://main.gd" id="1_ks0w5"]
 [ext_resource type="FontFile" uid="uid://b4wcwnm1vvitd" path="res://assets/Geo-Regular.ttf" id="2_ncjbv"]
@@ -14,11 +14,27 @@ default_font_size = 30
 default_font = ExtResource("3_h2yge")
 default_font_size = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
+bg_color = Color(0.768107, 0.324466, 2.88785e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+bg_color = Color(0.870387, 2.88785e-07, 1.2514e-06, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
+bg_color = Color(0.777244, 0.0719135, 0, 1)
+
 [sub_resource type="ButtonGroup" id="ButtonGroup_0xm2m"]
+
+[sub_resource type="Theme" id="Theme_5vw27"]
+default_font = ExtResource("3_h2yge")
+default_font_size = 20
 
 [sub_resource type="Theme" id="Theme_0xm2m"]
 default_font = ExtResource("2_ncjbv")
 default_font_size = 23
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
+bg_color = Color(0.136973, 0.315407, 0.650371, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ks0w5")
@@ -53,6 +69,9 @@ offset_top = 144.0
 offset_right = 288.0
 offset_bottom = 183.0
 theme = SubResource("Theme_1bvp3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_272bh")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_0xm2m")
 text = "Basic"
@@ -64,6 +83,9 @@ offset_top = 144.0
 offset_right = 800.0
 offset_bottom = 184.0
 theme = SubResource("Theme_1bvp3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_272bh")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_0xm2m")
 text = "Standard"
@@ -74,7 +96,10 @@ offset_left = 352.0
 offset_top = 144.0
 offset_right = 544.0
 offset_bottom = 184.0
-theme = SubResource("Theme_1bvp3")
+theme = SubResource("Theme_5vw27")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_272bh")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_0xm2m")
 text = "Uncommon"
@@ -86,6 +111,9 @@ offset_top = 144.0
 offset_right = 1056.0
 offset_bottom = 184.0
 theme = SubResource("Theme_1bvp3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_272bh")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_0xm2m")
 text = "Advanced"
@@ -143,6 +171,7 @@ offset_right = 704.0
 offset_bottom = 448.0
 theme = SubResource("Theme_0xm2m")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_kek77")
 text = "Generate Floors!"
 
 [node name="Camera2D" type="Camera2D" parent="."]

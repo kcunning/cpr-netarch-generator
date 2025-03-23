@@ -4,9 +4,9 @@
 # ✅Branching causes too many floors. Need to move counter head one, and keep track of 
 #	floor num seperately.
 # ⏹️Figure out the centering issue
-# ⏹️Prettify!
+# ➡️Prettify!
 # ✅Remove prints and unused code
-# ⏹️Make half-floors a tiny bit wider
+# ✅Make half-floors a tiny bit wider
 # ⏹️Don't scroll past the bottom of the arch?
 # ⏹️Update the system tray icon!
 
