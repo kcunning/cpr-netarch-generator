@@ -6,7 +6,6 @@ extends Node2D
 func set_up_floor(num, content):
 	floor_num = num
 	label = content
-	print("Single got: ", num, " ", content)
 	$Content.text = str(floor_num)
 	
 func _ready():

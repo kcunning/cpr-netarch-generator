@@ -8,7 +8,7 @@ default_font = ExtResource("1_62rrt")
 default_font_size = 25
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62rrt"]
-size = Vector2(578, 112)
+size = Vector2(642, 112)
 
 [node name="DoubleFloor" type="Node2D"]
 script = ExtResource("1_o34k6")
@@ -18,13 +18,14 @@ position = Vector2(0, 40)
 
 [node name="BG" type="Polygon2D" parent="First"]
 color = Color(0.792157, 0, 0, 1)
-polygon = PackedVector2Array(0, 0, 0, 64, 256, 64, 256, 0)
+polygon = PackedVector2Array(0, 0, 0, 64, 272, 64, 272, 32, 272, 0)
 
 [node name="Foreground" type="Polygon2D" parent="First"]
-polygon = PackedVector2Array(8, 8, 8, 56, 248, 56, 248, 8, 0, 8)
+polygon = PackedVector2Array(8, 8, 8, 56, 264, 56, 264, 8, 0, 8)
 
 [node name="FirstContent" type="RichTextLabel" parent="First"]
-offset_right = 256.0
+offset_left = 8.0
+offset_right = 264.0
 offset_bottom = 64.0
 theme = SubResource("Theme_o34k6")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -42,14 +43,17 @@ polygon = PackedVector2Array(168, -32, 200, -32, 191.084, -18.6254, 184, -8)
 position = Vector2(320, 40)
 
 [node name="BG" type="Polygon2D" parent="Second"]
+position = Vector2(64, 0)
 color = Color(0.792157, 0, 0, 1)
-polygon = PackedVector2Array(0, 0, 0, 64, 256, 64, 256, 0)
+polygon = PackedVector2Array(-16, 0, -16, 32, -16, 64, 256, 64, 256, 0)
 
 [node name="Foreground" type="Polygon2D" parent="Second"]
-polygon = PackedVector2Array(8, 8, 8, 56, 248, 56, 248, 8, 0, 8)
+position = Vector2(64, 0)
+polygon = PackedVector2Array(-8, 8, -8, 56, 248, 56, 248, 8, 0, 8)
 
 [node name="SecondContent" type="RichTextLabel" parent="Second"]
-offset_right = 256.0
+offset_left = 56.0
+offset_right = 312.0
 offset_bottom = 64.0
 theme = SubResource("Theme_o34k6")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -59,14 +63,14 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(200, 40)
+position = Vector2(264, 40)
 color = Color(0.792157, 0, 0, 1)
 polygon = PackedVector2Array(168, -32, 200, -32, 191.084, -18.6254, 184, -8)
 
 [node name="Box" type="Area2D" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="Box"]
-position = Vector2(287, 56)
+position = Vector2(320, 56)
 shape = SubResource("RectangleShape2D_62rrt")
 
 [connection signal="gui_input" from="First/FirstContent" to="." method="_on_first_content_gui_input"]

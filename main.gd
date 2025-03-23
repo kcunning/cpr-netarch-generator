@@ -5,9 +5,10 @@
 #	floor num seperately.
 # ⏹️Figure out the centering issue
 # ⏹️Prettify!
-# ⏹️Remove prints and unused code
+# ✅Remove prints and unused code
 # ⏹️Make half-floors a tiny bit wider
 # ⏹️Don't scroll past the bottom of the arch?
+# ⏹️Update the system tray icon!
 
 extends Node2D
 
@@ -118,7 +119,6 @@ func get_new_floor_key(used_nums):
 func get_branched_net_floors_dict():
 	# How many floors will we have?
 	var total_floors = roll_dice(3, 6)
-	print("Generating floors: ", total_floors)
 	var branched = false
 	# The first floor will always be Password DV6
 	floors_dict["1"] = ["Password DV6"]
@@ -163,7 +163,6 @@ func get_branched_net_floors_dict():
 				total_floors -= 2
 		elif branched and (total_floors - filled_floors) < 2:
 			# Finally, if we're down to two floors and an empty level, only do one
-			print("Single half floor here...")
 			n = get_new_floor_key(used_nums)
 			floors_dict[str(curr_floor)] = [curr_dv_table[n]]
 			used_nums.append(n)
@@ -177,58 +176,8 @@ func roll_dice(n, d):
 		var r = randi_range(1, d)
 		s += r
 	return s
-	
-func get_net_floors_dict():
-	var floor_num = roll_dice(3, 6)
-	var branches = 0
-	print("Generating %s floors" % floor_num)
-	while true:
-		var b = roll_dice(1, 10)
-		if b >= 7:
-			branches += 1
-		else:
-			break
-	print("We should have %d branches" % branches)
-	# Let's get the lobby first...
-	var floor_scn = load("res://floor.tscn")
-	var br_floor_scn = load("res://branched-floor.tscn")
-	var fl = floor_scn.instantiate()
-	fl.set_up_floor("1", "Password DV6")
-	floors_dict[1] = [fl]
-	fl = floor_scn.instantiate()
-	var n
-	while true:
-		n = roll_dice(1, 6)
-		if lobby_table[n] != "Password DV6":
-			break
-	fl.set_up_floor("2", lobby_table[n])
-	floors_dict[2] = [fl]
-	# Now let's get the rest of the floors!
-	var used_nums = []
-	for i in floor_num - 1:
-		if i == 3:
-			print("We should branch here")
-			curr_branches = 1
-			#break
-		while true:
-			n = roll_dice(3, 6)
-			var val = curr_dv_table[n]
-			if val.contains("File") or val.contains("Control"):
-				# We want netrunners to get more files or control nodes
-				break
-			if not n in used_nums:
-				used_nums.append(n)
-				break
-		fl = floor_scn.instantiate()
-		fl.set_up_floor(str(i+3), curr_dv_table[n])
-		var btn = fl.get_children()[0]
-		print(btn.size)
-		if curr_branches > 0:
-			btn.size.x = 200
-		floors_dict[i+1] = [fl]
-		
+
 func set_dv(btn):
-	print(btn)
 	arch_dv = btn.name
 	match arch_dv:
 		"Basic": curr_dv_table = basic_table
@@ -245,10 +194,8 @@ func _ready():
 		
 func _on_generate_floors_pressed() -> void:
 	get_branched_net_floors_dict()
-	print("Current Floors dict:", floors_dict)
 	var arch_scn = load("res://branched-floor.tscn")
 	arch_node = arch_scn.instantiate()
-	print("Setting up with floors dict, ", floors_dict)
 	arch_node.title = arch_dv
 	arch_node.set_up_arch(floors_dict)
 	$".".add_child(arch_node)
@@ -257,16 +204,13 @@ func _on_generate_floors_pressed() -> void:
 	arch_node.position = Vector2(500, 0)
 	
 func _unhandled_input(event: InputEvent) -> void:
-	#print(event)
 	if event is InputEventMouseButton and event.pressed==true:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			camera.position.y += 20
 		elif event.button_index == MOUSE_BUTTON_WHEEL_UP and camera.position.y > max_y:
 			camera.position.y -= 20
 
-
 func _on_back_btn_pressed() -> void:
-	print("Back button pressed")
 	arch_node.queue_free()
 	$DVContainer.visible = true
 	$BackBtn.visible = false

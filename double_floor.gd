@@ -5,10 +5,6 @@ var second: String
 var floor_num
 
 func set_up_floor(num, cont1, cont2):
-	#var first = find_child("FirstContent")
-	#first.text = "%da: %s" % [num, cont1]
-	#var second = find_child("SecondContent")
-	#second.text = "%db: %s" % [num, cont1]
 	first = cont1
 	second = cont2
 	floor_num = num

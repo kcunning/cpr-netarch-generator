@@ -39,9 +39,7 @@ func get_fake_arch():
 	
 func move_node(node):
 	var mid = get_viewport_rect().size / 2
-	#print("Mid: ", mid)
 	var box = node.find_child("Shape")
-	#print("Node width? ", box.shape.size.x)
 	var w = box.shape.size.x
 	var h = box.shape.size.y
 	node.position = Vector2(mid.x - (w/2), node.position.y + top_offset)
@@ -51,8 +49,8 @@ func move_node(node):
 		arrow.visible = false
 	num_floors_filled += 1
 
-func set_up_arch(arch=null):
-	print("Set up called with", arch)
+func set_up_arch(nuarch=null):
+	arch = nuarch
 	$Title.text = title
 	var base = $"."
 	var single_tscn = load("res://single_foor.tscn")
@@ -60,11 +58,9 @@ func set_up_arch(arch=null):
 	var half_tscn = load("res://half_floor.tscn")
 	
 	for num in arch:
-		#print(num, ": ", len(arch[num]))
 		if not branched and len(arch[num]) <= 1:
 			# This is for single floors
 			var new_floor = single_tscn.instantiate()
-			print("Single floor vals: ", num, " ", arch[num][0])
 			new_floor.set_up_floor(num, arch[num][0])
 			base.add_child(new_floor)
 			move_node(new_floor)
@@ -75,15 +71,11 @@ func set_up_arch(arch=null):
 			base.add_child(new_floor)
 			move_node(new_floor)
 		elif branched and len(arch[num]) <= 1:
-			#print("Branched floor, one floor")
 			var new_floor = half_tscn.instantiate()
-			#print("Creating with ", num, arch[num])
 			new_floor.set_up_floor(num, arch[num][0])
 			base.add_child(new_floor)
 			move_node(new_floor)
 	
 func _ready():
-	#arch = get_fake_arch()
-	#set_up_arch(arch)
 	pass	
 	
