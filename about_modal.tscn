@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b287m0qn385ny"]
+
+[ext_resource type="Script" uid="uid://do48m11tdewry" path="res://help_modal.gd" id="1_rtvd5"]
+
+[node name="HelpModal" type="Window"]
+auto_translate_mode = 1
+title = "Who made this thing?!"
+initial_position = 1
+size = Vector2i(600, 400)
+script = ExtResource("1_rtvd5")
+
+[node name="Text" type="RichTextLabel" parent="."]
+offset_left = 20.0
+offset_right = 580.0
+offset_bottom = 396.0
+bbcode_enabled = true
+text = "Creator: Katie Cunningham 
+Contact: https://therealkatie.net/
+
+This app uses mechanics from Cyberpunk Red. It is not officially associated with R. Talsorian Games. 
+
+Created with Godot. 
+
+Icons from Icons8."
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

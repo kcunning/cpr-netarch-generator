@@ -11,7 +11,7 @@
 # ✅Update the system tray icon!
 # ✅Populate all states of buttons so we don't get a weird black button on back
 # ⏹️Credits
-# ⏹️Help
+# ✅Help
 
 extends Node2D
 
@@ -224,4 +224,9 @@ func _on_help_button_pressed() -> void:
 	var helptscn = load("res://help_modal.tscn")
 	var help_window = helptscn.instantiate()
 	$".".add_child(help_window)
-	pass # Replace with function body.
+
+
+func _on_about_btn_pressed() -> void:
+	var abouttscn = load("res://about_modal.tscn")
+	var about_window = abouttscn.instantiate()
+	$".".add_child(about_window)

@@ -234,19 +234,8 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_kek77")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kek77")
 text = "Generate Floors!"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
-
-[node name="BackBtn" type="TextureButton" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-tooltip_text = "Generate a different arch"
-texture_normal = ExtResource("4_lquwl")
-texture_pressed = ExtResource("4_lquwl")
-texture_hover = ExtResource("5_7mycd")
-
-[node name="HelpButton" type="Button" parent="."]
+[node name="HelpButton" type="Button" parent="DVContainer"]
+layout_mode = 0
 offset_left = 800.0
 offset_top = 568.0
 offset_right = 952.0
@@ -264,6 +253,37 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ycdy4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ycdy4")
 text = "Help"
 
+[node name="AboutBtn" type="Button" parent="DVContainer"]
+offset_left = 976.0
+offset_top = 568.0
+offset_right = 1128.0
+offset_bottom = 616.0
+theme_override_fonts/font = ExtResource("3_h2yge")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxFlat_ycdy4")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_efxa6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_efxa6")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_efxa6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_efxa6")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_dg77c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dg77c")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ycdy4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ycdy4")
+text = "About"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="BackBtn" type="TextureButton" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+tooltip_text = "Generate a different arch"
+texture_normal = ExtResource("4_lquwl")
+texture_pressed = ExtResource("4_lquwl")
+texture_hover = ExtResource("5_7mycd")
+
 [connection signal="pressed" from="DVContainer/GenerateFloors" to="." method="_on_generate_floors_pressed"]
+[connection signal="pressed" from="DVContainer/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="DVContainer/AboutBtn" to="." method="_on_about_btn_pressed"]
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
-[connection signal="pressed" from="HelpButton" to="." method="_on_help_button_pressed"]
