@@ -20,7 +20,7 @@ Contact: https://therealkatie.net/
 This app uses mechanics from Cyberpunk Red. It is not officially associated with R. Talsorian Games. 
 
 Created with Godot. 
-
+Fonts from Google Fonts.
 Icons from Icons8."
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
