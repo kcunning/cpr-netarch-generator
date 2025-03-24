@@ -254,6 +254,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ycdy4")
 text = "Help"
 
 [node name="AboutBtn" type="Button" parent="DVContainer"]
+layout_mode = 0
 offset_left = 976.0
 offset_top = 568.0
 offset_right = 1128.0
