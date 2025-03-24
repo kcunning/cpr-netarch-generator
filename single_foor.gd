@@ -15,3 +15,5 @@ func _ready():
 func _on_content_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		$Content.text = floor_num + ": " + label
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		$Content.text = floor_num

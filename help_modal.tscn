@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx2bjipvxivi3"]
+
+[ext_resource type="Script" uid="uid://do48m11tdewry" path="res://help_modal.gd" id="1_at0wj"]
+
+[node name="HelpModal" type="Window"]
+auto_translate_mode = 1
+title = "What is this thing?!"
+initial_position = 1
+size = Vector2i(600, 400)
+script = ExtResource("1_at0wj")
+
+[node name="Text" type="RichTextLabel" parent="."]
+offset_left = 20.0
+offset_right = 580.0
+offset_bottom = 396.0
+bbcode_enabled = true
+text = "Hey, choom! This app was created to help Cyberpunk runners (AKA GMs) create Net Architectures on the fly for their Netrunners. It's [i]mostly[/i] based on the rules on page 209 of the Cyberpunk Core Rulebook. 
+
+To create a net arch:
+[ol]
+Select the appropriate DV based on either the netrunners interface level or the location they're trying to penetrate.
+Click on \"Generate.\" 
+To reveal a floor, click on it.
+If you need to hide a floor, right-click on it.
+[/ol]
+
+Some notes:
+[ul]
+In theory, net arches can branch multiple times. This generator only makes net arches that branch once. 
+All net arches start with Password DV 6. This isn't strictly RAW, but it mimics the published net arches. 
+[/ul]"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

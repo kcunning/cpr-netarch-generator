@@ -16,26 +16,13 @@ extends Node2D
 # ✅Scroll down to other floors
 # ✅Randomly generate a tree...
 # ✅Scrolling over a floor reveals it...
-# ⏹️Make left click undo a reveal
+# ✅Make left click undo a reveal
 
 var arch : Dictionary
 var branched : bool = false
 var num_floors_filled : int = 0
 var top_offset = 60
 var title : String
-
-func get_fake_arch():
-	# Returns a fake arch for now.
-	var dd = {
-		1: ["Password DV6"],
-		2: ["Password DV8"],
-		3: ["Wasp"],
-		4: ["Asp", "Wisp"],
-		5: ["File DV6"],
-		6: ["Control DV8"]
-	}
-	title = "Fake title for now"
-	return dd
 	
 func move_node(node):
 	var mid = get_viewport_rect().size / 2

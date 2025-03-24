@@ -3,12 +3,15 @@
 # ✅Need a way to do a new arch w/o restarting the app
 # ✅Branching causes too many floors. Need to move counter head one, and keep track of 
 #	floor num seperately.
-# ⏹️Figure out the centering issue
-# ➡️Prettify!
+# 💤Figure out the centering issue
+# ✅Prettify!
 # ✅Remove prints and unused code
 # ✅Make half-floors a tiny bit wider
-# ⏹️Don't scroll past the bottom of the arch?
-# ⏹️Update the system tray icon!
+# 💤Don't scroll past the bottom of the arch?
+# ✅Update the system tray icon!
+# ✅Populate all states of buttons so we don't get a weird black button on back
+# ⏹️Credits
+# ⏹️Help
 
 extends Node2D
 
@@ -215,3 +218,10 @@ func _on_back_btn_pressed() -> void:
 	$DVContainer.visible = true
 	$BackBtn.visible = false
 	
+
+
+func _on_help_button_pressed() -> void:
+	var helptscn = load("res://help_modal.tscn")
+	var help_window = helptscn.instantiate()
+	$".".add_child(help_window)
+	pass # Replace with function body.

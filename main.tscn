@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b81xrwdkqpvor"]
+[gd_scene load_steps=20 format=3 uid="uid://b81xrwdkqpvor"]
 
 [ext_resource type="Script" uid="uid://cu4sjp1ckan3q" path="res://main.gd" id="1_ks0w5"]
 [ext_resource type="FontFile" uid="uid://b4wcwnm1vvitd" path="res://assets/Geo-Regular.ttf" id="2_ncjbv"]
@@ -15,12 +15,15 @@ default_font = ExtResource("3_h2yge")
 default_font_size = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
+resource_name = "OrangeFlat"
 bg_color = Color(0.768107, 0.324466, 2.88785e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+resource_name = "RedBright"
 bg_color = Color(0.870387, 2.88785e-07, 1.2514e-06, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
+resource_name = "RedMuted"
 bg_color = Color(0.777244, 0.0719135, 0, 1)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_0xm2m"]
@@ -33,8 +36,25 @@ default_font_size = 20
 default_font = ExtResource("2_ncjbv")
 default_font_size = 23
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
+resource_name = "YellowFlat"
+bg_color = Color(1, 0.670588, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c57u"]
+resource_name = "GreenFlat"
+bg_color = Color(0.318753, 0.706019, 1.34766e-06, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
 bg_color = Color(0.136973, 0.315407, 0.650371, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycdy4"]
+bg_color = Color(0.185799, 0.314294, 0.626469, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efxa6"]
+bg_color = Color(0.355192, 0.635666, 1.15514e-06, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg77c"]
+bg_color = Color(1, 0.647059, 0, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ks0w5")
@@ -70,7 +90,15 @@ offset_right = 288.0
 offset_bottom = 183.0
 theme = SubResource("Theme_1bvp3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_7mycd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_272bh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_272bh")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_0xm2m")
@@ -84,7 +112,15 @@ offset_right = 800.0
 offset_bottom = 184.0
 theme = SubResource("Theme_1bvp3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_7mycd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_272bh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_272bh")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_0xm2m")
@@ -98,7 +134,15 @@ offset_right = 544.0
 offset_bottom = 184.0
 theme = SubResource("Theme_5vw27")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_7mycd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_272bh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_272bh")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_0xm2m")
@@ -112,7 +156,15 @@ offset_right = 1056.0
 offset_bottom = 184.0
 theme = SubResource("Theme_1bvp3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_7mycd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_272bh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_272bh")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_0xm2m")
@@ -171,6 +223,14 @@ offset_right = 704.0
 offset_bottom = 448.0
 theme = SubResource("Theme_0xm2m")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_5vw27")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_4c57u")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4c57u")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4c57u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4c57u")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5vw27")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5vw27")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_kek77")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kek77")
 text = "Generate Floors!"
 
@@ -186,5 +246,24 @@ texture_normal = ExtResource("4_lquwl")
 texture_pressed = ExtResource("4_lquwl")
 texture_hover = ExtResource("5_7mycd")
 
+[node name="HelpButton" type="Button" parent="."]
+offset_left = 800.0
+offset_top = 568.0
+offset_right = 952.0
+offset_bottom = 616.0
+theme_override_fonts/font = ExtResource("3_h2yge")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxFlat_ycdy4")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_efxa6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_efxa6")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_efxa6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_efxa6")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_dg77c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dg77c")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ycdy4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ycdy4")
+text = "Help"
+
 [connection signal="pressed" from="DVContainer/GenerateFloors" to="." method="_on_generate_floors_pressed"]
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="HelpButton" to="." method="_on_help_button_pressed"]
