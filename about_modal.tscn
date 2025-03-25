@@ -35,6 +35,8 @@ This app uses mechanics from Cyberpunk Red. It is not officially associated with
 
 Created with Godot. 
 Fonts from Google Fonts.
-Icons from Icons8."
+Icons from Icons8.
+
+Version 1.0.0"
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
