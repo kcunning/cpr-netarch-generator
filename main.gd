@@ -3,7 +3,7 @@
 # ✅Need a way to do a new arch w/o restarting the app
 # ✅Branching causes too many floors. Need to move counter head one, and keep track of 
 #	floor num seperately.
-# 💤Figure out the centering issue
+# ✅Figure out the centering issue
 # ✅Prettify!
 # ✅Remove prints and unused code
 # ✅Make half-floors a tiny bit wider
@@ -194,7 +194,7 @@ func _ready():
 	for btn in btns:
 		btn.pressed.connect(set_dv.bind(btn))
 	max_y = camera.position.y
-		
+
 func _on_generate_floors_pressed() -> void:
 	get_branched_net_floors_dict()
 	var arch_scn = load("res://branched-floor.tscn")
@@ -204,7 +204,7 @@ func _on_generate_floors_pressed() -> void:
 	$".".add_child(arch_node)
 	$DVContainer.visible = false
 	$BackBtn.visible = true
-	arch_node.position = Vector2(500, 0)
+	arch_node.position = Vector2(get_viewport_rect().size.x / 2, 0)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed==true:
@@ -212,19 +212,21 @@ func _unhandled_input(event: InputEvent) -> void:
 			camera.position.y += 20
 		elif event.button_index == MOUSE_BUTTON_WHEEL_UP and camera.position.y > max_y:
 			camera.position.y -= 20
+	elif event is InputEventKey and event.pressed:
+		if event.keycode == KEY_DOWN or event.keycode == KEY_PAGEDOWN:
+			camera.position.y += 20
+		elif event.keycode == KEY_UP or event.keycode == KEY_PAGEUP:
+			camera.position.y -= 20
 
 func _on_back_btn_pressed() -> void:
 	arch_node.queue_free()
 	$DVContainer.visible = true
 	$BackBtn.visible = false
-	
-
 
 func _on_help_button_pressed() -> void:
 	var helptscn = load("res://help_modal.tscn")
 	var help_window = helptscn.instantiate()
 	$".".add_child(help_window)
-
 
 func _on_about_btn_pressed() -> void:
 	var abouttscn = load("res://about_modal.tscn")

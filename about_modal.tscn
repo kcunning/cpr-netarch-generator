@@ -17,7 +17,21 @@ bbcode_enabled = true
 text = "Creator: Katie Cunningham 
 Contact: https://therealkatie.net/
 
-This app uses mechanics from Cyberpunk Red. It is not officially associated with R. Talsorian Games. 
+This app uses mechanics from Cyberpunk Red. It is not officially associated with R. Talsorian Games in any way. This app is free for all chooms to use. 
+
+Created with Godot. 
+Fonts from Google Fonts.
+Icons from Icons8."
+
+[node name="Text2" type="RichTextLabel" parent="."]
+offset_left = 20.0
+offset_right = 580.0
+offset_bottom = 396.0
+bbcode_enabled = true
+text = "Creator: Katie Cunningham 
+Contact: https://therealkatie.net/
+
+This app uses mechanics from Cyberpunk Red. It is not officially associated with R. Talsorian Games in any way. This app is free for all chooms to use. 
 
 Created with Godot. 
 Fonts from Google Fonts.
